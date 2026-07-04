@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="description" content="Nuestra historia de amor - 6 años juntos" />
+<title>Juan ❤ Amgie — Nuestra Historia</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6b1e2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nuestra Historia">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="apple-touch-startup-image" href="icons/splash-640x1136.png" media="(device-width:320px) and (device-height:568px) and (-webkit-device-pixel-ratio:2)">
+<link rel="apple-touch-startup-image" href="icons/splash-750x1334.png" media="(device-width:375px) and (device-height:667px) and (-webkit-device-pixel-ratio:2)">
+<link rel="apple-touch-startup-image" href="icons/splash-828x1792.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:2)">
+<link rel="apple-touch-startup-image" href="icons/splash-1125x2436.png" media="(device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3)">
+<link rel="apple-touch-startup-image" href="icons/splash-1242x2688.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:3)">
+<link rel="apple-touch-startup-image" href="icons/splash-1170x2532.png" media="(device-width:390px) and (device-height:844px) and (-webkit-device-pixel-ratio:3)">
+<link rel="apple-touch-startup-image" href="icons/splash-1284x2778.png" media="(device-width:428px) and (device-height:926px) and (-webkit-device-pixel-ratio:3)">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Juan ❤ Amgie - Nuestra Historia">
+<meta property="og:description" content="Una historia de amor interactiva. 6 años, 15 momentos.">
+<meta property="og:image" content="icons/icon-512.png">
+<meta property="og:type" content="website">
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- FALLBACK: si JS falla, mostrar todo el contenido -->
+<noscript>
+<style>
+.tl-item{opacity:1 !important;transform:none !important}
+[data-aos]{opacity:1 !important;transform:none !important}
+.loader,.intro-key{display:none !important}
+</style>
+</noscript>
+</head>
+<body class="theme-day">
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-orbit">
+      <div class="loader-heart-main"><i class="fa-solid fa-heart"></i></div>
+      <div class="loader-heart-orbit" style="--i:0"><i class="fa-solid fa-heart"></i></div>
+      <div class="loader-heart-orbit" style="--i:1"><i class="fa-solid fa-heart"></i></div>
+      <div class="loader-heart-orbit" style="--i:2"><i class="fa-solid fa-heart"></i></div>
+    </div>
+    <p class="loader-text">Preparando nuestra historia<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+    <p class="loader-hint">Un regalo hecho con amor</p>
+  </div>
+</div>
+
+<!-- INTRO LLAVE -->
+<div class="intro-key" id="introKey">
+  <div class="key-scene">
+    <div class="big-heart" id="bigHeart"><div class="heart-lock"><i class="fa-solid fa-lock"></i></div></div>
+    <div class="floating-key" id="floatingKey"><i class="fa-solid fa-key"></i></div>
+    <p class="key-hint">Toca la llave para abrir nuestro corazón</p>
+  </div>
+</div>
+
+<!-- CONTROLES -->
+<div class="floating-controls">
+  <button class="fc-btn" id="musicBtn" aria-label="Música"><i class="fa-solid fa-play"></i></button>
+  <button class="fc-btn" id="themeBtn" aria-label="Tema"><i class="fa-solid fa-moon"></i></button>
+  <button class="fc-btn" id="fxBtn" aria-label="Efectos"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+  <button class="fc-btn install-btn" id="installBtn" aria-label="Instalar" style="display:none"><i class="fa-solid fa-download"></i></button>
+</div>
+
+<div class="ios-hint" id="iosHint">
+  <button class="ios-hint-close" id="iosHintClose"><i class="fa-solid fa-xmark"></i></button>
+  <div class="ios-hint-icon"><img src="icons/icon-96.png" alt="App icon"></div>
+  <p class="ios-hint-title">Instala esta app</p>
+  <p class="ios-hint-text">Toca <i class="fa-solid fa-arrow-up-from-bracket"></i> y luego <b>"Añadir a pantalla de inicio"</b></p>
+</div>
+
+<div class="loveCounter" id="loveCounter">
+  <i class="fa-solid fa-heart"></i>
+  <span>Te amo × <b id="loveNum">0</b></span>
+</div>
+
+<audio id="bgMusic" loop preload="auto"></audio>
+
+<!-- FONDOS ANIMADOS -->
+<div class="bg-animated">
+  <div class="bg-gradient-orb orb-1"></div>
+  <div class="bg-gradient-orb orb-2"></div>
+  <div class="bg-gradient-orb orb-3"></div>
+  <div class="bg-gradient-orb orb-4"></div>
+</div>
+<div class="bg-stars" id="bgStars"></div>
+<div class="bg-moon"></div>
+<div class="bg-breath"></div>
+<div class="bg-noise"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-artistic">
+    <div class="hero-ring ring-1"></div>
+    <div class="hero-ring ring-2"></div>
+    <div class="hero-ring ring-3"></div>
+    <div class="hero-glow"></div>
+    <svg class="hero-sparkles" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="sparkle">
+          <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">— Una historia de amor —</p>
+    <h1 class="hero-title">
+      <span class="name" id="nameA">Juan</span>
+      <span class="heart-icon"><i class="fa-solid fa-heart"></i></span>
+      <span class="name" id="nameB">Amgie</span>
+    </h1>
+    <div class="hero-divider"><span></span><i class="fa-solid fa-heart"></i><span></span></div>
+    <p class="hero-subtitle" id="heroSubtitle">Celebrando 6 años de nuestra historia</p>
+    <p class="hero-caption">Un viaje escrito en 15 momentos inolvidables</p>
+    <button class="btn-cinema" id="startBtn">
+      <span>Comenzar nuestro viaje</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+    <div class="scroll-cue"><span></span></div>
+  </div>
+</section>
+
+<!-- CONTADOR -->
+<section class="countdown-section">
+  <h2 class="section-title">Nuestro tiempo juntos</h2>
+  <p class="section-sub">Cada segundo a tu lado se convierte en eternidad</p>
+  <div class="countdown">
+    <div class="cd-item"><b id="cdYears">0</b><span>años</span></div>
+    <div class="cd-item"><b id="cdMonths">0</b><span>meses</span></div>
+    <div class="cd-item"><b id="cdDays">0</b><span>días</span></div>
+    <div class="cd-item"><b id="cdHours">0</b><span>horas</span></div>
+    <div class="cd-item"><b id="cdMinutes">0</b><span>minutos</span></div>
+    <div class="cd-item"><b id="cdSeconds">0</b><span>segundos</span></div>
+  </div>
+  <p class="countdown-caption">Y contando…</p>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Cada momento contigo ha valido la pena.</p>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <h2 class="section-title">Nuestro amor en números</h2>
+  <p class="section-sub">Pequeñas cifras de un amor infinito</p>
+  <div class="stats-grid" id="statsGrid"></div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Gracias por caminar siempre a mi lado.</p>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline" id="timeline">
+  <h2 class="section-title">Nuestra línea del tiempo</h2>
+  <p class="section-sub">15 momentos que definieron nuestra historia</p>
+  <div class="timeline-line"></div>
+  <div class="timeline-items" id="timelineItems"></div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Eres mi lugar favorito.</p>
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery">
+  <h2 class="section-title">Álbum de recuerdos</h2>
+  <p class="section-sub">Fragmentos de nuestro para siempre</p>
+  <div class="masonry" id="masonry"></div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-prev" id="lbPrev"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="lb-next" id="lbNext"><i class="fa-solid fa-chevron-right"></i></button>
+  <img id="lbImage" alt="Recuerdo" />
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Te volvería a elegir una y mil veces.</p>
+</section>
+
+<!-- RAZONES -->
+<section class="reasons-section">
+  <h2 class="section-title">Razones por las que te amo</h2>
+  <p class="section-sub">Toca cada corazón para descubrirlas</p>
+  <div class="reasons-grid" id="reasonsGrid"></div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Contigo hasta el infinito, y aún así, poco tiempo.</p>
+</section>
+
+<!-- CANCIÓN -->
+<section class="song-section">
+  <h2 class="section-title">Nuestra canción</h2>
+  <p class="section-sub">La banda sonora de nuestro amor</p>
+  <div class="song-player">
+    <div class="vinyl" id="vinyl"><div class="vinyl-label"><i class="fa-solid fa-heart"></i></div></div>
+    <div class="song-info">
+      <p class="song-title" id="songTitle">Nuestra Canción</p>
+      <p class="song-artist" id="songArtist">— Para ti, mi amor</p>
+      <div class="song-controls">
+        <button class="song-play-btn" id="songPlayBtn"><i class="fa-solid fa-play"></i></button>
+        <div class="song-waves">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Amarte es lo más fácil que he hecho en la vida.</p>
+</section>
+
+<!-- CARTA -->
+<section class="letter-section" id="letterSection">
+  <h2 class="section-title">Una carta para ti</h2>
+  <p class="section-sub">Toca el sobre para abrirla</p>
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+      <div class="env-flap"></div>
+      <div class="env-body"><div class="env-seal"><i class="fa-solid fa-heart"></i></div></div>
+      <div class="env-paper">
+        <div class="paper-inner">
+          <div class="paper-decoration"><i class="fa-solid fa-heart"></i></div>
+          <p class="paper-greet">Mi amor,</p>
+          <p class="paper-text" id="paperText"></p>
+          <p class="paper-sign">— Con todo mi amor,<br>Juan <i class="fa-solid fa-heart" style="color:#e6394d"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Si el destino escribe historias, la nuestra es su obra maestra.</p>
+</section>
+
+<!-- PROMESAS -->
+<section class="promises-section">
+  <h2 class="section-title">Mis promesas para ti</h2>
+  <p class="section-sub">Todo lo que quiero seguir siendo a tu lado</p>
+  <div class="promises-list" id="promisesList"></div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote">Y si tuviera que elegir de nuevo, te elegiría en cada universo.</p>
+</section>
+
+<!-- FINAL -->
+<section class="final-scene" id="finalScene">
+  <div class="final-artistic">
+    <div class="final-ring ring-1"></div>
+    <div class="final-ring ring-2"></div>
+    <div class="final-ring ring-3"></div>
+    <div class="final-glow"></div>
+  </div>
+  <canvas id="fireworks"></canvas>
+  <div class="final-content">
+    <p class="final-eyebrow">— Para ti, mi amor —</p>
+    <h2 class="final-msg" id="finalMsg1">Gracias por regalarme estos maravillosos 6 años.</h2>
+    <p class="final-msg2">Cada día contigo ha sido el mejor capítulo de mi vida.<br>Mi lugar favorito siempre será a tu lado.</p>
+    <h3 class="final-love">Te amo infinitamente.</h3>
+    <p class="final-msg2">Por muchos años más juntos.</p>
+    <div class="final-names">
+      <span>Juan</span> <i class="fa-solid fa-heart"></i> <span>Amgie</span>
+    </div>
+    <p class="final-anniversary">Feliz aniversario número 6 · <span id="anniYear"></span></p>
+    <button class="btn-cinema" id="celebrateBtn">
+      <span>Lanzar celebración</span>
+      <i class="fa-solid fa-sparkles"></i>
+    </button>
+    <p class="final-footer">Hecho con <i class="fa-solid fa-heart" style="color:#e6394d"></i> por Juan · <span id="fYear"></span></p>
+  </div>
+</section>
+
+<!-- SECRETO -->
+<div class="secret-modal" id="secretModal">
+  <div class="secret-inner">
+    <i class="fa-solid fa-heart secret-heart"></i>
+    <h3>Un secreto solo para ti…</h3>
+    <p>Descubriste el mensaje escondido.<br>Cada día encuentro una nueva razón para amarte.<br><b>Feliz aniversario, mi vida.</b></p>
+    <button class="btn-cinema" id="secretClose"><span>Gracias, mi amor</span></button>
+  </div>
+</div>
+
+<!-- Librerías (opcionales, con fallback) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+<script src="js/register-sw.js"></script>
+</body>
+</html>
