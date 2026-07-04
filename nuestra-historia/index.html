@@ -1,0 +1,193 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#f7d5d0" />
+<meta name="description" content="Una historia de amor interactiva - Juan y Amgie" />
+<title>Juan y Amgie - Nuestra Historia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-day">
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-hearts">
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    <p class="loader-text">Preparando nuestra historia<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+  </div>
+</div>
+
+<div class="intro-key" id="introKey">
+  <div class="key-scene">
+    <div class="big-heart" id="bigHeart">
+      <div class="heart-lock"><i class="fa-solid fa-lock"></i></div>
+    </div>
+    <div class="floating-key" id="floatingKey">
+      <i class="fa-solid fa-key"></i>
+    </div>
+    <p class="key-hint">Toca la llave para abrir nuestro corazon</p>
+  </div>
+</div>
+
+<div class="floating-controls">
+  <button class="fc-btn" id="musicBtn" title="Musica"><i class="fa-solid fa-play"></i></button>
+  <button class="fc-btn" id="themeBtn" title="Modo noche"><i class="fa-solid fa-moon"></i></button>
+  <button class="fc-btn" id="fxBtn" title="Efectos"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+</div>
+
+<div class="loveCounter" id="loveCounter" title="Haz clic">
+  <i class="fa-solid fa-heart"></i>
+  <span>Te amo x <b id="loveNum">0</b></span>
+</div>
+
+<audio id="bgMusic" loop preload="auto"></audio>
+<audio id="sfxEnvelope" preload="auto"></audio>
+<audio id="sfxChime" preload="auto"></audio>
+
+<div id="tsparticles" class="bg-layer"></div>
+<div class="bg-stars" id="bgStars"></div>
+<div class="bg-moon" id="bgMoon"><div class="moon-glow"></div></div>
+<div class="bg-breath"></div>
+
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-aos="fade-down">- Una historia de amor -</p>
+    <h1 class="hero-title">
+      <span class="name" id="nameA">Juan</span>
+      <span class="heart-icon"><i class="fa-solid fa-heart"></i></span>
+      <span class="name" id="nameB">Amgie</span>
+    </h1>
+    <p class="hero-subtitle" id="heroSubtitle">Celebrando 6 anios de nuestra historia</p>
+    <button class="btn-cinema" id="startBtn">
+      <span>Comenzar nuestro viaje</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+    <div class="scroll-cue"><span></span></div>
+  </div>
+</section>
+
+<section class="countdown-section">
+  <h2 class="section-title" data-aos="fade-up">Nuestro tiempo juntos</h2>
+  <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Cada segundo a tu lado se convierte en eternidad</p>
+  <div class="countdown" id="countdown">
+    <div class="cd-item"><b id="cdYears">0</b><span>anios</span></div>
+    <div class="cd-item"><b id="cdMonths">0</b><span>meses</span></div>
+    <div class="cd-item"><b id="cdDays">0</b><span>dias</span></div>
+    <div class="cd-item"><b id="cdHours">0</b><span>horas</span></div>
+    <div class="cd-item"><b id="cdMinutes">0</b><span>minutos</span></div>
+    <div class="cd-item"><b id="cdSeconds">0</b><span>segundos</span></div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <p class="quote" data-aos="fade-up">"Cada momento contigo ha valido la pena."</p>
+</section>
+
+<section class="timeline" id="timeline">
+  <h2 class="section-title" data-aos="fade-up">Nuestra linea del tiempo</h2>
+  <div class="timeline-line"></div>
+  <div class="timeline-items" id="timelineItems"></div>
+</section>
+
+<section class="quote-section">
+  <p class="quote" data-aos="fade-up">"Gracias por caminar siempre a mi lado."</p>
+</section>
+
+<section class="gallery" id="gallery">
+  <h2 class="section-title" data-aos="fade-up">Album de recuerdos</h2>
+  <p class="section-sub" data-aos="fade-up" data-aos-delay="150">Fragmentos de nuestro para siempre</p>
+  <div class="masonry" id="masonry"></div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-prev" id="lbPrev"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="lb-next" id="lbNext"><i class="fa-solid fa-chevron-right"></i></button>
+  <img id="lbImage" alt="Recuerdo" />
+</div>
+
+<section class="quote-section">
+  <p class="quote" data-aos="fade-up">"Eres mi lugar favorito."</p>
+</section>
+
+<section class="letter-section" id="letterSection">
+  <h2 class="section-title" data-aos="fade-up">Una carta para ti</h2>
+  <p class="section-sub" data-aos="fade-up" data-aos-delay="100">Toca el sobre para abrirla</p>
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+      <div class="env-flap"></div>
+      <div class="env-body">
+        <div class="env-seal"><i class="fa-solid fa-heart"></i></div>
+      </div>
+      <div class="env-paper" id="envPaper">
+        <div class="paper-inner">
+          <p class="paper-greet">Mi amor,</p>
+          <p class="paper-text" id="paperText"></p>
+          <p class="paper-sign">- Con todo mi amor,<br>Juan <i class="fa-solid fa-heart" style="color:#e6394d"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <p class="quote" data-aos="fade-up">"Te volveria a elegir una y mil veces."</p>
+</section>
+
+<section class="final-scene" id="finalScene">
+  <div class="final-bg" id="finalBg"></div>
+  <div class="final-overlay"></div>
+  <canvas id="fireworks"></canvas>
+  <div class="final-content">
+    <p class="final-eyebrow">- Para ti, mi amor -</p>
+    <h2 class="final-msg" id="finalMsg1">Gracias por regalarme estos maravillosos 6 anios.</h2>
+    <p class="final-msg2">Cada dia contigo ha sido el mejor capitulo de mi vida.<br>Mi lugar favorito siempre sera a tu lado.</p>
+    <h3 class="final-love">Te amo infinitamente.</h3>
+    <p class="final-msg2">Por muchos anios mas juntos.</p>
+    <div class="final-names">
+      <span>Juan</span> <i class="fa-solid fa-heart"></i> <span>Amgie</span>
+    </div>
+    <button class="btn-cinema" id="celebrateBtn">
+      <span>Lanzar celebracion</span>
+      <i class="fa-solid fa-sparkles"></i>
+    </button>
+  </div>
+</section>
+
+<div class="secret-modal" id="secretModal">
+  <div class="secret-inner">
+    <i class="fa-solid fa-heart secret-heart"></i>
+    <h3>Un secreto solo para ti...</h3>
+    <p>Si estas leyendo esto, significa que descubriste el mensaje escondido.<br>Cada dia encuentro una nueva razon para amarte.<br><b>Feliz aniversario, mi vida.</b></p>
+    <button class="btn-cinema" id="secretClose"><span>Gracias, mi amor</span></button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
