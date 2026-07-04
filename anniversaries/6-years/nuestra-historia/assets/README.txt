@@ -1,1 +1,1 @@
-Opcional: envelope.mp3, chime.mp3
+Opcional: sonidos adicionales (envelope.mp3, chime.mp3)

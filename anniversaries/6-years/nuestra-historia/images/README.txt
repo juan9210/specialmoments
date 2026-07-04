@@ -1,1 +1,1 @@
-Coloca aqui: fondo.jpg, ano1.jpg, ano2.jpg, ano3.jpg, ano4.jpg, ano5.jpg, ano6.jpg
+Coloca aqui: momento1.jpg hasta momento15.jpg
